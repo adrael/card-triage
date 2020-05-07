@@ -20,11 +20,20 @@
   },
   "projects": {
     "card-triage": {
-      "tags": []
+      "tags": ["scope:front", "type:app"]
     },
     "card-triage-e2e": {
-      "tags": [],
+      "tags": ["scope:front"],
       "implicitDependencies": ["card-triage"]
+    },
+    "server": {
+      "tags": ["scope:back", "type:app"]
+    },
+    "interfaces": {
+      "tags": ["scope:shared", "type:types"]
+    },
+    "features-card-data": {
+      "tags": ["scope:front", "type:data"]
     }
   }
 }

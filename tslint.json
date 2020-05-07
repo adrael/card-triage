@@ -60,6 +60,38 @@
         "allow": [],
         "depConstraints": [
           {
+            "sourceTag": "scope:front",
+            "onlyDependOnLibsWithTags": ["scope:front", "scope:shared"]
+          },
+          {
+            "sourceTag": "scope:back",
+            "onlyDependOnLibsWithTags": ["scope:back", "scope:shared"]
+          },
+          {
+            "sourceTag": "scope:shared",
+            "onlyDependOnLibsWithTags": ["scope:shared"]
+          },
+          {
+            "sourceTag": "type:app",
+            "onlyDependOnLibsWithTags": ["type:feature", "type:data", "type:util", "type:types"]
+          },
+          {
+            "sourceTag": "type:feature",
+            "onlyDependOnLibsWithTags": ["type:data", "type:util", "type:types"]
+          },
+          {
+            "sourceTag": "type:data",
+            "onlyDependOnLibsWithTags": ["type:data", "type:util", "type:types"]
+          },
+          {
+            "sourceTag": "type:util",
+            "onlyDependOnLibsWithTags": ["type:util", "type:types"]
+          },
+          {
+            "sourceTag": "type:types",
+            "onlyDependOnLibsWithTags": ["type:types"]
+          },
+          {
             "sourceTag": "*",
             "onlyDependOnLibsWithTags": ["*"]
           }
