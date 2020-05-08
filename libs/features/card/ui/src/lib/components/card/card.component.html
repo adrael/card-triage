@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-body">
+        <div class="card-title mb-0 d-flex flex-row justify-content-between align-items-center">
+            <h5 class="mb-0">{{ card.patient_name }}</h5>
+
+            <div class="btn-group">
+                <button type="button"
+                        class="btn btn-sm dropdown-toggle"
+                        data-toggle="dropdown"
+                        [ngClass]="'btn-' + getCardStatusBadgeColor(card.status)">
+                    {{ card.status | titlecase }}
+                </button>
+
+                <div class="dropdown-menu">
+                    <h6 class="dropdown-header">Change status</h6>
+
+                    <span class="dropdown-item"
+                          *ngFor="let cardStatus of cardStatuses"
+                          (click)="setStatus(cardStatus)">
+                        {{ cardStatus | titlecase }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-subtitle mb-2">
+            <small class="text-muted">{{ card.created_date | date: 'MMM d, y, HH:mm' }}</small>
+        </div>
+
+        <p class="card-text">
+            <span class="badge badge-pill badge-primary mr-1" *ngFor="let arrhythmia of card.arrhythmias">
+                {{ arrhythmia }}
+            </span>
+        </p>
+    </div>
+</div>

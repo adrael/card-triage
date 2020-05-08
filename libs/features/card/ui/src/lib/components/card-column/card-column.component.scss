@@ -1,0 +1,13 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+.card-column-body {
+    border-radius: .25rem;
+    background-color: $gray-100;
+}
+
+card-triage-card {
+    &:not(:last-child) {
+        margin-bottom: .25rem;
+    }
+}

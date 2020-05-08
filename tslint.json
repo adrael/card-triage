@@ -73,11 +73,15 @@
           },
           {
             "sourceTag": "type:app",
-            "onlyDependOnLibsWithTags": ["type:feature", "type:data", "type:util", "type:types"]
+            "onlyDependOnLibsWithTags": ["type:feature", "type:ui", "type:data", "type:util", "type:types"]
           },
           {
             "sourceTag": "type:feature",
-            "onlyDependOnLibsWithTags": ["type:data", "type:util", "type:types"]
+            "onlyDependOnLibsWithTags": ["type:ui", "type:data", "type:util", "type:types"]
+          },
+          {
+            "sourceTag": "type:ui",
+            "onlyDependOnLibsWithTags": ["type:ui", "type:util", "type:types"]
           },
           {
             "sourceTag": "type:data",

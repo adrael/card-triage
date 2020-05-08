@@ -1,0 +1,10 @@
+<div class="card-column">
+    <div class="card-column-title">
+        <h4>{{ columnTitle }}</h4>
+    </div>
+
+    <div class="card-column-body p-2">
+        <card-triage-card *ngFor="let card of cards" [card]="card"
+                          (statusChange)="onStatusChange(card, $event)"></card-triage-card>
+    </div>
+</div>

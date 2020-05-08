@@ -2,8 +2,18 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 export const environment = {
-    production: false
+    production: false,
+    runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictActionWithinNgZone: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true
+    },
+    storeDevTools: [StoreDevtoolsModule.instrument({ name: 'botcoin' })]
 };
 
 /*

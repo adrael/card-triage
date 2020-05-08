@@ -1,39 +1,45 @@
 {
-  "npmScope": "card-triage",
-  "implicitDependencies": {
-    "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
+    "npmScope": "card-triage",
+    "implicitDependencies": {
+        "angular.json": "*",
+        "package.json": {
+            "dependencies": "*",
+            "devDependencies": "*"
+        },
+        "tsconfig.json": "*",
+        "tslint.json": "*",
+        "nx.json": "*"
     },
-    "tsconfig.json": "*",
-    "tslint.json": "*",
-    "nx.json": "*"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "@nrwl/workspace/tasks-runners/default",
+            "options": {
+                "cacheableOperations": ["build", "lint", "test", "e2e"]
+            }
+        }
+    },
+    "projects": {
+        "card-triage": {
+            "tags": ["scope:front", "type:app"]
+        },
+        "card-triage-e2e": {
+            "tags": ["scope:front"],
+            "implicitDependencies": ["card-triage"]
+        },
+        "server": {
+            "tags": ["scope:back", "type:app"]
+        },
+        "interfaces": {
+            "tags": ["scope:shared", "type:types"]
+        },
+        "features-card-data": {
+            "tags": ["scope:front", "type:data"]
+        },
+        "features-card-utils": {
+            "tags": ["scope:shared", "type:util"]
+        },
+        "features-card-ui": {
+            "tags": ["scope:front", "type:ui"]
+        }
     }
-  },
-  "projects": {
-    "card-triage": {
-      "tags": ["scope:front", "type:app"]
-    },
-    "card-triage-e2e": {
-      "tags": ["scope:front"],
-      "implicitDependencies": ["card-triage"]
-    },
-    "server": {
-      "tags": ["scope:back", "type:app"]
-    },
-    "interfaces": {
-      "tags": ["scope:shared", "type:types"]
-    },
-    "features-card-data": {
-      "tags": ["scope:front", "type:data"]
-    }
-  }
 }

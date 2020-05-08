@@ -1,257 +1,304 @@
 {
-  "version": 1,
-  "projects": {
-    "card-triage": {
-      "projectType": "application",
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "apps/card-triage",
-      "sourceRoot": "apps/card-triage/src",
-      "prefix": "card-triage",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/card-triage",
-            "index": "apps/card-triage/src/index.html",
-            "main": "apps/card-triage/src/main.ts",
-            "polyfills": "apps/card-triage/src/polyfills.ts",
-            "tsConfig": "apps/card-triage/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "apps/card-triage/src/favicon.ico",
-              "apps/card-triage/src/assets"
-            ],
-            "styles": [
-              "apps/card-triage/src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/card-triage/src/environments/environment.ts",
-                  "with": "apps/card-triage/src/environments/environment.prod.ts"
+    "version": 1,
+    "projects": {
+        "card-triage": {
+            "projectType": "application",
+            "schematics": {
+                "@nrwl/angular:component": {
+                    "style": "scss"
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+            },
+            "root": "apps/card-triage",
+            "sourceRoot": "apps/card-triage/src",
+            "prefix": "card-triage",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/apps/card-triage",
+                        "index": "apps/card-triage/src/index.html",
+                        "main": "apps/card-triage/src/main.ts",
+                        "polyfills": "apps/card-triage/src/polyfills.ts",
+                        "tsConfig": "apps/card-triage/tsconfig.app.json",
+                        "aot": true,
+                        "assets": ["apps/card-triage/src/favicon.ico", "apps/card-triage/src/assets"],
+                        "styles": [
+                            "apps/card-triage/src/styles.scss",
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css"
+                        ],
+                        "scripts": [
+                            "node_modules/jquery/dist/jquery.min.js",
+                            "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/card-triage/src/environments/environment.ts",
+                                    "with": "apps/card-triage/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    }
                 },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "card-triage:build",
+                        "proxyConfig": "apps/card-triage/proxy.conf.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "card-triage:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "card-triage:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": ["apps/card-triage/tsconfig.app.json", "apps/card-triage/tsconfig.spec.json"],
+                        "exclude": ["**/node_modules/**", "!apps/card-triage/**"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "apps/card-triage/jest.config.js",
+                        "tsConfig": "apps/card-triage/tsconfig.spec.json",
+                        "passWithNoTests": true,
+                        "setupFile": "apps/card-triage/src/test-setup.ts"
+                    }
                 }
-              ]
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "card-triage:build",
-            "proxyConfig": "apps/card-triage/proxy.conf.json"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "card-triage:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "card-triage:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/card-triage/tsconfig.app.json",
-              "apps/card-triage/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/card-triage/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/card-triage/jest.config.js",
-            "tsConfig": "apps/card-triage/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/card-triage/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "card-triage-e2e": {
-      "root": "apps/card-triage-e2e",
-      "sourceRoot": "apps/card-triage-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/card-triage-e2e/cypress.json",
-            "tsConfig": "apps/card-triage-e2e/tsconfig.e2e.json",
-            "devServerTarget": "card-triage:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "card-triage:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/card-triage-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/card-triage-e2e/**"]
-          }
-        }
-      }
-    },
-    "server": {
-      "root": "apps/server",
-      "sourceRoot": "apps/server/src",
-      "projectType": "application",
-      "prefix": "server",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/server",
-            "main": "apps/server/src/main.ts",
-            "tsConfig": "apps/server/tsconfig.app.json",
-            "assets": ["apps/server/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/server/src/environments/environment.ts",
-                  "with": "apps/server/src/environments/environment.prod.ts"
+        "card-triage-e2e": {
+            "root": "apps/card-triage-e2e",
+            "sourceRoot": "apps/card-triage-e2e/src",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@nrwl/cypress:cypress",
+                    "options": {
+                        "cypressConfig": "apps/card-triage-e2e/cypress.json",
+                        "tsConfig": "apps/card-triage-e2e/tsconfig.e2e.json",
+                        "devServerTarget": "card-triage:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "card-triage:serve:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": ["apps/card-triage-e2e/tsconfig.e2e.json"],
+                        "exclude": ["**/node_modules/**", "!apps/card-triage-e2e/**"]
+                    }
                 }
-              ]
             }
-          }
         },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "server:build"
-          }
+        "server": {
+            "root": "apps/server",
+            "sourceRoot": "apps/server/src",
+            "projectType": "application",
+            "prefix": "server",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@nrwl/node:build",
+                    "options": {
+                        "outputPath": "dist/apps/server",
+                        "main": "apps/server/src/main.ts",
+                        "tsConfig": "apps/server/tsconfig.app.json",
+                        "assets": ["apps/server/src/assets"]
+                    },
+                    "configurations": {
+                        "production": {
+                            "optimization": true,
+                            "extractLicenses": true,
+                            "inspect": false,
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/server/src/environments/environment.ts",
+                                    "with": "apps/server/src/environments/environment.prod.ts"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@nrwl/node:execute",
+                    "options": {
+                        "buildTarget": "server:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": ["apps/server/tsconfig.app.json", "apps/server/tsconfig.spec.json"],
+                        "exclude": ["**/node_modules/**", "!apps/server/**"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "apps/server/jest.config.js",
+                        "tsConfig": "apps/server/tsconfig.spec.json",
+                        "passWithNoTests": true
+                    }
+                }
+            }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/server/tsconfig.app.json",
-              "apps/server/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/server/**"]
-          }
+        "interfaces": {
+            "projectType": "library",
+            "root": "libs/interfaces",
+            "sourceRoot": "libs/interfaces/src",
+            "prefix": "card-triage",
+            "architect": {
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": ["libs/interfaces/tsconfig.lib.json", "libs/interfaces/tsconfig.spec.json"],
+                        "exclude": ["**/node_modules/**", "!libs/interfaces/**"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "libs/interfaces/jest.config.js",
+                        "tsConfig": "libs/interfaces/tsconfig.spec.json",
+                        "passWithNoTests": true,
+                        "setupFile": "libs/interfaces/src/test-setup.ts"
+                    }
+                }
+            },
+            "schematics": {}
         },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/server/jest.config.js",
-            "tsConfig": "apps/server/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
+        "features-card-data": {
+            "projectType": "library",
+            "root": "libs/features/card/data",
+            "sourceRoot": "libs/features/card/data/src",
+            "prefix": "card-triage",
+            "architect": {
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "libs/features/card/data/tsconfig.lib.json",
+                            "libs/features/card/data/tsconfig.spec.json"
+                        ],
+                        "exclude": ["**/node_modules/**", "!libs/features/card/data/**"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "libs/features/card/data/jest.config.js",
+                        "tsConfig": "libs/features/card/data/tsconfig.spec.json",
+                        "passWithNoTests": true,
+                        "setupFile": "libs/features/card/data/src/test-setup.ts"
+                    }
+                }
+            },
+            "schematics": {}
+        },
+        "features-card-utils": {
+            "projectType": "library",
+            "root": "libs/features/card/utils",
+            "sourceRoot": "libs/features/card/utils/src",
+            "prefix": "card-triage",
+            "architect": {
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "libs/features/card/utils/tsconfig.lib.json",
+                            "libs/features/card/utils/tsconfig.spec.json"
+                        ],
+                        "exclude": ["**/node_modules/**", "!libs/features/card/utils/**"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "libs/features/card/utils/jest.config.js",
+                        "tsConfig": "libs/features/card/utils/tsconfig.spec.json",
+                        "passWithNoTests": true,
+                        "setupFile": "libs/features/card/utils/src/test-setup.ts"
+                    }
+                }
+            },
+            "schematics": {}
+        },
+        "features-card-ui": {
+            "projectType": "library",
+            "root": "libs/features/card/ui",
+            "sourceRoot": "libs/features/card/ui/src",
+            "prefix": "card-triage",
+            "architect": {
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "libs/features/card/ui/tsconfig.lib.json",
+                            "libs/features/card/ui/tsconfig.spec.json"
+                        ],
+                        "exclude": ["**/node_modules/**", "!libs/features/card/ui/**"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "libs/features/card/ui/jest.config.js",
+                        "tsConfig": "libs/features/card/ui/tsconfig.spec.json",
+                        "passWithNoTests": true,
+                        "setupFile": "libs/features/card/ui/src/test-setup.ts"
+                    }
+                }
+            },
+            "schematics": {}
         }
-      }
     },
-    "interfaces": {
-      "projectType": "library",
-      "root": "libs/interfaces",
-      "sourceRoot": "libs/interfaces/src",
-      "prefix": "card-triage",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/interfaces/tsconfig.lib.json",
-              "libs/interfaces/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/interfaces/**"]
-          }
+    "cli": {
+        "packageManager": "yarn",
+        "defaultCollection": "@nrwl/angular"
+    },
+    "schematics": {
+        "@nrwl/angular:application": {
+            "unitTestRunner": "jest",
+            "e2eTestRunner": "cypress"
         },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/interfaces/jest.config.js",
-            "tsConfig": "libs/interfaces/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/interfaces/src/test-setup.ts"
-          }
+        "@nrwl/angular:library": {
+            "unitTestRunner": "jest"
         }
-      },
-      "schematics": {}
     },
-    "features-card-data": {
-      "projectType": "library",
-      "root": "libs/features/card/data",
-      "sourceRoot": "libs/features/card/data/src",
-      "prefix": "card-triage",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/features/card/data/tsconfig.lib.json",
-              "libs/features/card/data/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/features/card/data/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/features/card/data/jest.config.js",
-            "tsConfig": "libs/features/card/data/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/features/card/data/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {}
-    }
-  },
-  "cli": {
-    "packageManager": "yarn",
-    "defaultCollection": "@nrwl/angular"
-  },
-  "schematics": {
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
-    }
-  },
-  "defaultProject": "card-triage"
+    "defaultProject": "card-triage"
 }

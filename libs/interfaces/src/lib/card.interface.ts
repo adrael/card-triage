@@ -7,3 +7,5 @@ export interface Card {
     created_date: string;
     patient_name: string;
 }
+
+export type Cards = Card[];
