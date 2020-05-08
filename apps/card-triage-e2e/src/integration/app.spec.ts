@@ -1,13 +1,27 @@
-import { getGreeting } from '../support/app.po';
+import { getCardColumns, getCards, getSearchInput } from '../support/app.po';
 
 describe('card-triage', () => {
     beforeEach(() => cy.visit('/'));
 
-    it('displays welcome message', () => {
-        // Custom command example, see `../support/commands.ts` file
-        cy.login('my-email@something.com', 'myPassword');
+    it('displays both cards columns', () => {
+        getCardColumns().should('have.length', 2);
+    });
 
-        // Function helper example, see `../support/app.po.ts` file
-        getGreeting().contains('Welcome to card-triage!');
+    it('displays "Todo" column', () => {
+        getCardColumns().first().get('.card-column-title').contains('Todo');
+    });
+
+    it('displays "Done" column', () => {
+        getCardColumns().eq(1).get('.card-column-title').contains('Done');
+    });
+
+    it('filters cards accordingly', () => {
+        getSearchInput().type('aus');
+
+        cy.wait(1000);
+
+        getCards().each(card => {
+            cy.wrap(card).find('.badge').contains('Pause');
+        });
     });
 });
