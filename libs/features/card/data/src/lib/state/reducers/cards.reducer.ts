@@ -23,25 +23,16 @@ export const selectAllCards = selectAll;
 
 const cardsReducerFn = createReducer(
     cardsInitialState,
-    on(
-        CardsActions.fetchCardsSuccess,
-        (state: CardsState, { cards }: { cards: Cards }) => {
-            return adapter.addMany(cards, state);
-        }
-    ),
-    on(
-        CardsActions.fetchFilteredCardsSuccess,
-        (state: CardsState, { cards }: { cards: Cards }) => {
-            const _state = adapter.removeAll(state);
-            return adapter.addMany(cards, _state);
-        }
-    ),
-    on(
-        CardsActions.changeCardStatusSuccess,
-        (state: CardsState, { update }: { update: Update<Card> }) => {
-            return adapter.updateOne(update, state);
-        }
-    )
+    on(CardsActions.fetchCardsSuccess, (state: CardsState, { cards }: { cards: Cards }) => {
+        return adapter.addMany(cards, state);
+    }),
+    on(CardsActions.fetchFilteredCardsSuccess, (state: CardsState, { cards }: { cards: Cards }) => {
+        const _state = adapter.removeAll(state);
+        return adapter.addMany(cards, _state);
+    }),
+    on(CardsActions.changeCardStatusSuccess, (state: CardsState, { update }: { update: Update<Card> }) => {
+        return adapter.updateOne(update, state);
+    })
 );
 
 export function cardsReducer(state: CardsState | undefined, action: Action): CardsState {

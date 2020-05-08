@@ -12,7 +12,10 @@ const fetchFilteredCardsSuccess = createAction('[Cards API] Fetch Filtered Cards
 
 const changeCardStatus = createAction('[Cards] Change Card Status', props<CardStatusChange>());
 const changeCardStatusError = createAction('[Cards API] Change Card Status Error', props<{ error: any }>());
-const changeCardStatusSuccess = createAction('[Cards API] Change Card Status Success', props<{ update: Update<Card> }>());
+const changeCardStatusSuccess = createAction(
+    '[Cards API] Change Card Status Success',
+    props<{ update: Update<Card> }>()
+);
 
 // tslint:disable-next-line:naming-convention variable-name
 export const CardsActions = {

@@ -31,7 +31,9 @@ export class CardsEffects {
             mergeMap(({ query }: { query: string }) =>
                 this._cardsRepository.fetchFilteredCards(query).pipe(
                     map((cards: Cards) => CardsActions.fetchFilteredCardsSuccess({ cards })),
-                    catchError(({ message }: HttpErrorResponse) => of(CardsActions.fetchFilteredCardsError({ error: message })))
+                    catchError(({ message }: HttpErrorResponse) =>
+                        of(CardsActions.fetchFilteredCardsError({ error: message }))
+                    )
                 )
             )
         )
@@ -43,10 +45,14 @@ export class CardsEffects {
             ofType(CardsActions.changeCardStatus),
             mergeMap((cardStatusChange: CardStatusChange) =>
                 this._cardsRepository.changeCardStatus(cardStatusChange).pipe(
-                    map((card: Card) => CardsActions.changeCardStatusSuccess({
-                        update: { id: card.id, changes: card }
-                    })),
-                    catchError(({ message }: HttpErrorResponse) => of(CardsActions.changeCardStatusError({ error: message })))
+                    map((card: Card) =>
+                        CardsActions.changeCardStatusSuccess({
+                            update: { id: card.id, changes: card }
+                        })
+                    ),
+                    catchError(({ message }: HttpErrorResponse) =>
+                        of(CardsActions.changeCardStatusError({ error: message }))
+                    )
                 )
             )
         )
@@ -56,6 +62,5 @@ export class CardsEffects {
         private readonly _router: Router,
         private readonly _actions$: Actions,
         private readonly _cardsRepository: CardsRepository
-    ) {
-    }
+    ) {}
 }

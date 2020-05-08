@@ -17,11 +17,7 @@ export class SearchInputComponent implements OnInit, OnDestroy {
 
     public ngOnInit(): void {
         this._queryChangeHandler$
-            .pipe(
-                takeUntil(this._destroyed$),
-                distinctUntilChanged(),
-                debounceTime(500)
-            )
+            .pipe(takeUntil(this._destroyed$), distinctUntilChanged(), debounceTime(500))
             .subscribe((query: string) => this.queryChange.next(query));
     }
 

@@ -4,7 +4,4 @@ import { cardsFeatureKey, CardsState, selectAllCards } from '../reducers/cards.r
 
 export const selectCardsState = createFeatureSelector<CardsState>(cardsFeatureKey);
 
-export const selectCards = createSelector(
-    selectCardsState,
-    selectAllCards
-);
+export const selectCards = createSelector(selectCardsState, selectAllCards);

@@ -4,7 +4,10 @@
     </div>
 
     <div class="card-column-body p-2">
-        <card-triage-card *ngFor="let card of cards" [card]="card"
-                          (statusChange)="onStatusChange(card, $event)"></card-triage-card>
+        <card-triage-card
+            *ngFor="let card of cards"
+            [card]="card"
+            (statusChange)="onStatusChange(card, $event)"
+        ></card-triage-card>
     </div>
 </div>

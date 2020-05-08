@@ -10,15 +10,19 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 col-xl-4 offset-xl-2">
-                <card-triage-card-column columnTitle="Todo"
-                                         [cards]="pendingOrRejectedCards | async"
-                                         (cardStatusChange)="onCardStatusChange($event)"></card-triage-card-column>
+                <card-triage-card-column
+                    columnTitle="Todo"
+                    [cards]="pendingOrRejectedCards | async"
+                    (cardStatusChange)="onCardStatusChange($event)"
+                ></card-triage-card-column>
             </div>
 
             <div class="col-12 col-md-6 col-xl-4">
-                <card-triage-card-column columnTitle="Done"
-                                         [cards]="doneCards | async"
-                                         (cardStatusChange)="onCardStatusChange($event)"></card-triage-card-column>
+                <card-triage-card-column
+                    columnTitle="Done"
+                    [cards]="doneCards | async"
+                    (cardStatusChange)="onCardStatusChange($event)"
+                ></card-triage-card-column>
             </div>
         </div>
     </div>

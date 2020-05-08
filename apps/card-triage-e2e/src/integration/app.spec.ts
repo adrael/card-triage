@@ -8,11 +8,17 @@ describe('card-triage', () => {
     });
 
     it('displays "Todo" column', () => {
-        getCardColumns().first().get('.card-column-title').contains('Todo');
+        getCardColumns()
+            .first()
+            .get('.card-column-title')
+            .contains('Todo');
     });
 
     it('displays "Done" column', () => {
-        getCardColumns().eq(1).get('.card-column-title').contains('Done');
+        getCardColumns()
+            .eq(1)
+            .get('.card-column-title')
+            .contains('Done');
     });
 
     it('filters cards accordingly', () => {
@@ -21,7 +27,9 @@ describe('card-triage', () => {
         cy.wait(1000);
 
         getCards().each(card => {
-            cy.wrap(card).find('.badge').contains('Pause');
+            cy.wrap(card)
+                .find('.badge')
+                .contains('Pause');
         });
     });
 });

@@ -4,19 +4,19 @@
             <h5 class="mb-0">{{ card.patient_name }}</h5>
 
             <div class="btn-group">
-                <button type="button"
-                        class="btn btn-sm dropdown-toggle"
-                        data-toggle="dropdown"
-                        [ngClass]="'btn-' + getCardStatusBadgeColor(card.status)">
+                <button
+                    type="button"
+                    class="btn btn-sm dropdown-toggle"
+                    data-toggle="dropdown"
+                    [ngClass]="'btn-' + getCardStatusBadgeColor(card.status)"
+                >
                     {{ card.status | titlecase }}
                 </button>
 
                 <div class="dropdown-menu">
                     <h6 class="dropdown-header">Change status</h6>
 
-                    <span class="dropdown-item"
-                          *ngFor="let cardStatus of cardStatuses"
-                          (click)="setStatus(cardStatus)">
+                    <span class="dropdown-item" *ngFor="let cardStatus of cardStatuses" (click)="setStatus(cardStatus)">
                         {{ cardStatus | titlecase }}
                     </span>
                 </div>

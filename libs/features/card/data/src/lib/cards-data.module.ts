@@ -16,5 +16,4 @@ import { cardsFeatureKey, cardsReducer } from './state/reducers/cards.reducer';
     ],
     providers: [CardsRepository, CardsService]
 })
-export class CardsDataModule {
-}
+export class CardsDataModule {}

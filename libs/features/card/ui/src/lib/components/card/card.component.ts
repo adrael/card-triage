@@ -15,14 +15,16 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent implements OnInit {
-    @Input() public readonly card: Card;
+    @Input() public card: Card;
 
     @Output() public readonly statusChange: EventEmitter<CardStatus> = new EventEmitter<CardStatus>();
 
     public cardStatuses: ReadonlyArray<CardStatus> = [];
 
     public ngOnInit(): void {
-        this.cardStatuses = isCardDone(this.card) ? CARD_STATUSES_FOR_DONE_CARD : CARD_STATUSES_FOR_PENDING_OR_REJECTED_CARD;
+        this.cardStatuses = isCardDone(this.card)
+            ? CARD_STATUSES_FOR_DONE_CARD
+            : CARD_STATUSES_FOR_PENDING_OR_REJECTED_CARD;
     }
 
     public getCardStatusBadgeColor(status: CardStatus): CardStatusColor {

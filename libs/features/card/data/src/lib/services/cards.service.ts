@@ -4,21 +4,16 @@ import { Cards, CardStatusChange } from '@card-triage/interfaces';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CardsActions } from '../state/actions/cards.actions';
+import { CardsState } from '../state/reducers/cards.reducer';
 
 import { selectCards } from '../state/selectors/cards.selectors';
-import { CardsActions } from '../state/actions/cards.actions';
-import { CardsRepository } from '../repositories/cards.repository';
-import { CardsState } from '../state/reducers/cards.reducer';
-import { ICardService } from './card.service.interface';
 
 @Injectable()
-export class CardsService implements ICardService {
+export class CardsService {
     private readonly _cards: Observable<Cards> = this._cardsStore.pipe(select(selectCards));
 
-    constructor(
-        private readonly _cardsStore: Store<CardsState>,
-        private readonly _cardsRepository: CardsRepository) {
-    }
+    constructor(private readonly _cardsStore: Store<CardsState>) {}
 
     public fetchCards(): void {
         this._cardsStore.dispatch(CardsActions.fetchCards());

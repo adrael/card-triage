@@ -27,7 +27,10 @@ describe('Cards Selectors', () => {
                 patient_name: 'Bob',
                 status: CardStatus.PENDING
             };
-            const initialState = { cards: [card] };
+            const initialState = {
+                entities: { [card.id]: card },
+                ids: [card.id]
+            };
             const selectedResult = selectCards.projector(initialState);
 
             expect(selectedResult).toStrictEqual([card]);

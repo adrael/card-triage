@@ -8,7 +8,12 @@ export const filterCards = (cards: Cards, query: string): Cards => {
             return true;
         }
 
-        if (card.id.toString(10).toLowerCase().includes(_query)) {
+        if (
+            card.id
+                .toString(10)
+                .toLowerCase()
+                .includes(_query)
+        ) {
             return true;
         }
 

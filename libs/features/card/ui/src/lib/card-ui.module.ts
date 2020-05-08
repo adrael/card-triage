@@ -8,5 +8,4 @@ import { CardColumnComponent } from './components/card-column/card-column.compon
     exports: [CardComponent, CardColumnComponent],
     declarations: [CardComponent, CardColumnComponent]
 })
-export class CardUiModule {
-}
+export class CardUiModule {}

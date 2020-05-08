@@ -10,14 +10,7 @@ import { RootStoreModule } from './root-store.module';
 
 @NgModule({
     declarations: [AppComponent],
-    imports: [
-        BrowserModule,
-        RouterModule.forRoot([]),
-        RootStoreModule,
-        CardsDataModule,
-        CardUiModule,
-        SearchUiModule
-    ],
+    imports: [BrowserModule, RouterModule.forRoot([]), RootStoreModule, CardsDataModule, CardUiModule, SearchUiModule],
     providers: [],
     bootstrap: [AppComponent]
 })
