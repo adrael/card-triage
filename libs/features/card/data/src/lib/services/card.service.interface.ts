@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 export interface ICardService {
     fetchCards(): void;
 
+    fetchFilteredCards(query: string): void;
+
     getCardsDone(): Observable<Cards>;
 
     getCardsPendingOrRejected(): Observable<Cards>;

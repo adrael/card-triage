@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Card, Cards, CardStatusChange } from '@card-triage/interfaces';
 import { Observable } from 'rxjs';
@@ -9,6 +9,11 @@ export class CardsRepository {
 
     public fetchCards(): Observable<Cards> {
         return this._httpClient.get<Cards>('/api/cards');
+    }
+
+    public fetchFilteredCards(query: string): Observable<Cards> {
+        const httpParams = new HttpParams().append('query', query);
+        return this._httpClient.get<Cards>('/api/cards', { params: httpParams });
     }
 
     public changeCardStatus({ card, status }: CardStatusChange): Observable<Card> {

@@ -30,6 +30,13 @@ const cardsReducerFn = createReducer(
         }
     ),
     on(
+        CardsActions.fetchFilteredCardsSuccess,
+        (state: CardsState, { cards }: { cards: Cards }) => {
+            const _state = adapter.removeAll(state);
+            return adapter.addMany(cards, _state);
+        }
+    ),
+    on(
         CardsActions.changeCardStatusSuccess,
         (state: CardsState, { update }: { update: Update<Card> }) => {
             return adapter.updateOne(update, state);

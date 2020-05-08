@@ -2,8 +2,7 @@
     <h1 class="navbar-brand m-0">Card Triage</h1>
 
     <form class="ml-auto form-inline">
-        <label for="search" class="sr-only">Search</label>
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" id="search" />
+        <card-triage-search-input (queryChange)="onQueryChange($event)"></card-triage-search-input>
     </form>
 </nav>
 

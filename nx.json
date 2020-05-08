@@ -40,6 +40,9 @@
         },
         "features-card-ui": {
             "tags": ["scope:front", "type:ui"]
+        },
+        "features-search-ui": {
+            "tags": ["scope:front", "type:ui"]
         }
     }
 }

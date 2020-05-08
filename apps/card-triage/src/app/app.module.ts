@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CardsDataModule } from '@card-triage/features/card/data';
 import { CardUiModule } from '@card-triage/features/card/ui';
+import { SearchUiModule } from '@card-triage/features/search/ui';
 
 import { AppComponent } from './app.component';
 import { RootStoreModule } from './root-store.module';
@@ -14,7 +15,8 @@ import { RootStoreModule } from './root-store.module';
         RouterModule.forRoot([]),
         RootStoreModule,
         CardsDataModule,
-        CardUiModule
+        CardUiModule,
+        SearchUiModule
     ],
     providers: [],
     bootstrap: [AppComponent]

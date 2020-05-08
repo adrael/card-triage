@@ -19,7 +19,9 @@
             "@card-triage/interfaces": ["libs/interfaces/src/index.ts"],
             "@card-triage/features/card/data": ["libs/features/card/data/src/index.ts"],
             "@card-triage/features/card/utils": ["libs/features/card/utils/src/index.ts"],
-            "@card-triage/features/card/ui": ["libs/features/card/ui/src/index.ts"]
+            "@card-triage/features/card/ui": ["libs/features/card/ui/src/index.ts"],
+            "@card-triage/features/search/ui": ["libs/features/search/ui/src/index.ts"],
+            "@card-triage/features/search/data": ["libs/features/search/data/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

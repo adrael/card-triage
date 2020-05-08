@@ -1,0 +1,9 @@
+<label for="search" class="sr-only">Search</label>
+
+<input class="form-control mr-sm-2"
+       type="search"
+       placeholder="Search"
+       id="search"
+       name="search"
+       [ngModel]="query"
+       (ngModelChange)="onQueryChange($event)"/>

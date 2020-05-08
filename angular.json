@@ -285,6 +285,34 @@
                 }
             },
             "schematics": {}
+        },
+        "features-search-ui": {
+            "projectType": "library",
+            "root": "libs/features/search/ui",
+            "sourceRoot": "libs/features/search/ui/src",
+            "prefix": "card-triage",
+            "architect": {
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "libs/features/search/ui/tsconfig.lib.json",
+                            "libs/features/search/ui/tsconfig.spec.json"
+                        ],
+                        "exclude": ["**/node_modules/**", "!libs/features/search/ui/**"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "libs/features/search/ui/jest.config.js",
+                        "tsConfig": "libs/features/search/ui/tsconfig.spec.json",
+                        "passWithNoTests": true,
+                        "setupFile": "libs/features/search/ui/src/test-setup.ts"
+                    }
+                }
+            },
+            "schematics": {}
         }
     },
     "cli": {

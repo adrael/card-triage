@@ -23,4 +23,13 @@ export class AppComponent implements OnInit {
     public onCardStatusChange(cardStatusChange: CardStatusChange): void {
         this._cardsService.changeCardStatus(cardStatusChange);
     }
+
+    public onQueryChange(query: string): void {
+        if (!query.length) {
+            this._cardsService.fetchCards();
+            return;
+        }
+
+        this._cardsService.fetchFilteredCards(query);
+    }
 }

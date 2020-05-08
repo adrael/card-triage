@@ -23,6 +23,20 @@ export class CardsEffects {
             )
         )
     );
+
+    // tslint:disable-next-line:typedef
+    public readonly fetchFilteredCards$ = createEffect(() =>
+        this._actions$.pipe(
+            ofType(CardsActions.fetchFilteredCards),
+            mergeMap(({ query }: { query: string }) =>
+                this._cardsRepository.fetchFilteredCards(query).pipe(
+                    map((cards: Cards) => CardsActions.fetchFilteredCardsSuccess({ cards })),
+                    catchError(({ message }: HttpErrorResponse) => of(CardsActions.fetchFilteredCardsError({ error: message })))
+                )
+            )
+        )
+    );
+
     // tslint:disable-next-line:typedef
     public readonly changeCardStatus$ = createEffect(() =>
         this._actions$.pipe(

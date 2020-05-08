@@ -24,6 +24,10 @@ export class CardsService implements ICardService {
         this._cardsStore.dispatch(CardsActions.fetchCards());
     }
 
+    public fetchFilteredCards(query: string): void {
+        this._cardsStore.dispatch(CardsActions.fetchFilteredCards({ query }));
+    }
+
     public getCardsDone(): Observable<Cards> {
         return this._cards.pipe(map((cards: Cards) => cards.filter(isCardDone)));
     }

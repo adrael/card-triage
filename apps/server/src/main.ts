@@ -1,5 +1,7 @@
 import { Card, Cards } from '@card-triage/interfaces';
 
+import { filterCards } from './utils/filter-cards.interface';
+
 const jsonServer = require('json-server');
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
@@ -14,7 +16,13 @@ let cards: Cards = JSON.parse(fs.readFileSync(path.join(__dirname, './assets/car
 
 // Add custom routes before JSON Server router
 server.get('/cards', (req, res) => {
-    res.jsonp(cards);
+    if (!req.query.query) {
+        res.jsonp(cards);
+        return;
+    }
+
+    const filteredCards = filterCards(cards, req.query.query);
+    res.jsonp(filteredCards);
 });
 
 server.put('/cards/:id/status/:status', (req, res) => {
